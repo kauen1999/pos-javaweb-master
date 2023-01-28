@@ -14,9 +14,13 @@ public class Disciplina {
 
     private String nome;
 
+    private String categoria;
+
     private String cargaHoraria;
 
-    private String professor;
+    @OneToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
 
     private String status;
 

@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
-   @Query(value = "select a from Aluno a order by a.nome ASC") //mesma forma de pesquisar que a de baixo de forma nativa
+    @Query(value = "select a from Aluno a order by a.nome ASC") //mesma forma de pesquisar que a de baixo de forma nativa
     public List<Aluno> listarOrdenadoPorNome();
 
     public List<Aluno> findAllByOrderByNomeAsc(); // mesma forma de pesquisar que a de cima

@@ -17,7 +17,6 @@ public interface DisciplinaRepository extends JpaRepository<Disciplina, Integer>
 
     @Query("select a from Disciplina a where a.nome like %:nome% ")
     public List<Disciplina> buscarDisciplinaPorNomeLike(@Param("nome") String nome);
-    public Disciplina findByDisciplinaid(Integer id);
 
-    public Disciplina findByMatriculaAndNome(Integer id, String nome);
+    public Disciplina findByCategoriaAndNome(String categoria, String nome);
 }

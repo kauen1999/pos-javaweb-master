@@ -10,15 +10,15 @@ import java.util.List;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Integer> {
+    @Query(value = "select a from Curso a order by a.nome ASC") //mesma forma de pesquisar que a de baixo de forma nativa
+    public List<Curso> listarOrdenadoPorNome();
 
-    @Query("select a from Curso a order by a.nome ASC")
-    public List<Curso> listarOrdernadoPorNome();
-    public List<Curso> findAllByOrderByNomeAsc();
+    public List<Curso> findAllByOrderByNomeAsc(); // mesma forma de pesquisar que a de cima
+    @Query ("select a from Curso a where a.nome like %:nome%")
+    public List<Curso> buscarCursoPorNomeLike(@Param("nome")String nome);
+    public Curso findByCodigo(String codigo);
 
-    @Query("select a from Curso a where a.nome like %:nome% ")
-    public List<Curso> buscarCursoPorNomeLike(@Param("nome") String nome);
-    public Curso findByCursoid(Integer id);
+    public Curso findByCodigoAndNome(String codigo, String nome);
 
-    public Curso findByIdAndNome(Integer id, String nome);
 
 }
